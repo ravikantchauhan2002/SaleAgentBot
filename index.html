@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <title>Sales Chat (Agentforce)</title>
+  <style>
+    /* optional minimal page layout */
+    body, html { height: 100%; margin: 0; font-family: Arial, sans-serif; }
+    .page { display:flex; align-items:center; justify-content:center; height:100%; }
+    .panel { max-width: 900px; width:100%; padding: 16px; box-sizing:border-box; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="panel">
+      <h2>Sales Chat Demo</h2>
+      <p>Chat will appear as a floating launcher on the page (bottom-right by default).</p>
+    </div>
+  </div>
+
+  <!-- === Embedded Service bootstrap (paste BEFORE </body>) === -->
+  <script type='text/javascript'>
+    function initEmbeddedMessaging() {
+      try {
+        embeddedservice_bootstrap.settings = embeddedservice_bootstrap.settings || {};
+        embeddedservice_bootstrap.settings.language = 'en_US';
+
+        embeddedservice_bootstrap.init(
+          '00DgK00000BT4Q6', // replace with your Org ID (00D...)
+          'Sales_Agent_ESD', // replace with your deployment name
+          'https://orgfarm-af63d400f1-dev-ed.develop.my.site.com/ESWSalesAgentESD1761550027096', // replace with your ESD site url (https://...my.site.com/...)
+          {
+            scrt2URL: 'https://orgfarm-af63d400f1-dev-ed.develop.my.salesforce-scrt.com' // optional: use your scrt2URL if present
+          }
+        );
+        console.log('ESD init invoked from GitHub Pages');
+      } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+      }
+    };
+  </script>
+
+  <!-- Load the bootstrap script for your ESD -->
+  <script type='text/javascript' src='https://orgfarm-af63d400f1-dev-ed.develop.my.site.com/ESWSalesAgentESD1761550027096/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()' defer></script>
+  <!-- === end embedded snippet === -->
+</body>
+</html>
